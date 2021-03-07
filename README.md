@@ -12,21 +12,16 @@
 ###### [luci-theme-atmaterial](#/README.md)  &nbsp;&nbsp;&nbsp;&nbsp;#atmaterial-主题<br>
 ###### [luci-theme-rosy](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#主题-rosy<br>
 ###### [luci-theme-infinityfreedom](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#透明主题<br>
-###### [luci-app-openclash](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#openclash 出国软件<br>
-###### [luci-app-clash](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#clash 出国软件<br>
 ###### [luci-app-serverchan](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#微信推送<br>
-###### [luci-app-eqos](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#内网控速 内网IP限速工具<br>
+###### [luci-app-eqos](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#内网控速 内网IP限速工具，和Turbo ACC 网络加速有冲突<br>
 ###### [luci-app-jd-dailybonus](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#京东签到<br>
-###### [luci-app-passwall](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#passwall 出国软件<br>
-###### [luci-app-advanced](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#[luci-app-advanced&nbsp;高级设置&nbsp;+&nbsp;luci-app-filebrowser&nbsp;文件浏览器（文件管理）](#/README.md)<br>
+###### [luci-app-advanced](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#[luci-app-advanced&nbsp;高级设置&nbsp;+&nbsp;luci-app-filebrowser&nbsp;文件浏览器（文件管理）](#/README.md)，luci-app-advanced和luci-app-filebrowser不能同时编译<br>
 ###### [luci-app-poweroff](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#关机（增加关机功能）<br>
 ###### [luci-theme-argon](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#新的argon主题<br>
 ###### [luci-app-argon-config](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#argon主题设置（编译时候选上,在固件的‘系统’里面）<br>
 ###### [luci-app-k3screenctrl](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#k3屏幕，k3路由器专用<br>
 ###### [luci-app-koolproxyR](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#广告过滤大师 plus+  ，慎用，不懂的话，打开就没网络了<br>
 ###### [luci-app-oaf （OpenAppFilter）](#/README.md)  &nbsp;&nbsp;&nbsp;&nbsp;#应用过滤 ，该模块只工作在路由模式， 旁路模式、桥模式不生效，还有和Turbo ACC 网络加速有冲突<br>
-###### [luci-app-ssr-plus](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#shadowsocksR Puls+  出国软件<br>
-###### [luci-app-vssr](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#Hello World 也叫彩旗飘飘  出国软件<br>
 ###### [luci-app-gost](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#GO语言实现的安全隧道<br>
 ###### [luci-app-cpulimit](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#CPU性能限制<br>
 ###### [luci-app-wrtbwmon-zhcn](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#流量统计，替代luci-app-wrtbwmon，在固件状态栏显示，[不能同时编译](#/README.md)<br>
@@ -41,27 +36,31 @@
 ###### [luci-app-mentohust](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#MentoHUST 的 LuCI 控制界面<br>
 ###### [luci-app-adguardhome](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#adguardhome<br>
 ###### [luci-app-dockerman](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#docker容器，和源码自带的luci-app-docker[不能同时编译](#/README.md)，同时编译会失败，所以要注意<br>
-
+###### [luci-app-syncthing](#/README.md)   &nbsp;&nbsp;&nbsp;&nbsp;#Syncthing是一个连续的文件同步程序。它在两台或多台计算机之间同步文件
+###### [luci-app-dnsfilter](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#广告过滤，支持 AdGuardHome/Host/DNSMASQ/Domain 格式的规则订阅
+###### [luci-app-tencentddns](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#腾讯DDNS
+###### [luci-app-ttnode](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#一个运行在openwrt下的甜糖星愿自动采集插件
+###### [luci-app-serverchand](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#钉钉信息推送
+###### [luci-app-socat](#/README.md)    &nbsp;&nbsp;&nbsp;&nbsp;#端口转发
 #
 
-- 编译luci-app-advanced时候自动带上luci-app-filebrowser ，高级设置+文件浏览器（文件管理）
+- 编译luci-app-advanced时候自动带上luci-app-filebrowser ，高级设置+文件浏览器（文件管理），所以luci-app-advanced和luci-app-filebrowser不能同时编译，只能二选一
 
 - luci-app-samba 和 luci-app-samba4 不能同时编译，同时编译会失败
 - 想选择luci-app-samba4，首先在Extra packages ---> 把autosamba取消，在选择插件的那里把luci-app-samba取消，然后在Network ---> 把 samba36-server取消，最后选择luci-app-samba4，记得顺序别搞错
 
-- luci-app-dockerman 和 luci-app-docker 不能同时编译，同时编译会失败
+- luci-app-dockerman 和 luci-app-docker 不能同时编译，同时编译会编译失败
 - 编译luci-app-dockerman或者luci-app-docker，首先要在Global build settings ---> Enable IPv6 support in packages (NEW)（选上）
-#
-##### 写入emmc方法
-- 1、编译完成之后解压出.img文件，使用【balenaEtcher】把镜像写入U盘在盒子上启动，之后用固件里的ttyd（命令窗）或者SSH执行 n1-install 命令，即可把固件安装到 emmc
-- 2、如果本来就是openwrt的，将固件上传到 /tmp/upgrade( xxx.img )，之后执行 n1-update 即可从该固件升级
-- 3、这是我根据作者描述个人理解为这样的，我没N1盒子没办法测试，有谁测试过的什么情况请告知
-- 4、写盘工具推荐使用[Etcher](https://www.balena.io/etcher/)
+
+- luci-app-wrtbwmon 和 luci-app-wrtbwmon-zhcn 不能同时编译，同时编译会编译失败
+
+- luci-app-autopoweroff 和 luci-app-autoreboot 不能同时编译，同时编译会编译失败
 #
 #
 ##### 如果还是没有你需要的插件，请不要一下子就拉取别人的插件包
 ##### 相同的文件都拉一起，因为有一些可能还是其他大神修改过的容易造成编译错误的
 ##### 想要什么插件就单独的拉取什么插件就好，或者告诉我，我把插件放我的插件包就行了
+##### 《[单独拉取插件说明](https://github.com/danshui-git/shuoming/blob/master/ming.md)》 ，里面包含各种命令简单说明
 #
 #
 ## 感谢各位大神的源码，openwrt有各位大神而精彩，感谢！感谢！，插件每天白天12点跟晚上12点都同步一次各位大神的源码！
