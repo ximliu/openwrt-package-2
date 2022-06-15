@@ -1,42 +1,41 @@
+# SPDX-License-Identifier: GPL-3.0-only
 #
-# Copyright (C) 2020 CTCGFW Project-OpenWrt
-# <https://project-openwrt.eu.org>
-#
-# This is free software, licensed under the GNU General Public License v3.
-# See /LICENSE for more information.
-#
+# Copyright (C) 2021 ImmortalWrt.org
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=subconverter
-PKG_VERSION:=0.6.4
-PKG_RELEASE:=2
+PKG_BASE_VERSION:=0.7.0
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/tindy2013/subconverter.git
-PKG_SOURCE_DATE:=2020-12-19
-PKG_SOURCE_VERSION:=a57906c9a6edd04da869b12ffb88f397c3ea8af6
-PKG_MIRROR_HASH:=07815478cbfa1644ad016ea4b68a2edc9316f9aa23edf699d82c4c9026e17462
+PKG_SOURCE_DATE:=2021-09-20
+PKG_SOURCE_VERSION:=fc641444aad07ebb620ac7c0c9501ffeddfa60d3
+PKG_MIRROR_HASH:=9b12004a3cd78c6803075a2f99431f7766a157993447eec5032d0d0d3d705979
+
+PKG_VERSION:=$(PKG_BASE_VERSION)-$(PKG_SOURCE_DATE)-$(call version_abbrev,$(PKG_SOURCE_VERSION))
 
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE
-PKG_MAINTAINER:=CN_SZTL <cnsztl@project-openwrt.eu.org>
+PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 
-PKG_BUILD_DEPENDS:=duktape jpcre2 rapidjson
+PKG_BUILD_DEPENDS:=jpcre2 libcron quickjspp rapidjson toml11
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/subconverter
-	SECTION:=utils
-	CATEGORY:=Utilities
-	TITLE:=Utility to convert between various subscription format
-	URL:=https://github.com/tindy2013/subconverter
-	DEPENDS:=+libpthread +libstdcpp +libevent2 +libyaml-cpp +libpcre2 +libcurl +zlib
+  SECTION:=utils
+  CATEGORY:=Utilities
+  TITLE:=Utility to convert between various subscription format
+  URL:=https://github.com/tindy2013/subconverter
+  DEPENDS:=+libpthread +libstdcpp +libevent2 +libyaml-cpp +libpcre2 +libcurl +zlib
 endef
 
 define Package/subconverter/description
-	Utility to convert between various proxy subscription formats.
+  Utility to convert between various proxy subscription formats.
 endef
 
 TARGET_CXXFLAGS := $(FPIC) $(filter-out -O%,$(TARGET_CXXFLAGS)) -O3

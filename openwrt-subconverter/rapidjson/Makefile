@@ -1,25 +1,21 @@
+# SPDX-License-Identifier: GPL-3.0-only
 #
-# Copyright (C) 2020 CTCGFW Project-OpenWrt
-# (https://project-openwrt.eu.org)
-#
-# This is free software, licensed under the GNU General Public License v3.
-# See /LICENSE for more information.
-#
+# Copyright (C) 2021 ImmortalWrt.org
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rapidjson
-PKG_VERSION:=1.1.0
-PKG_RELEASE:=4
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Tencent/rapidjson.git
-PKG_SOURCE_DATE:=2021-01-06
-PKG_SOURCE_VERSION:=585042c02ba6350e10fc43df8beee1bc097f4c5f
-PKG_MIRROR_HASH:=ef7d015b91f58355b02ce8356214ec7d6bdc3807d01b220834faa00afbcd7a7f
+PKG_SOURCE_DATE:=2021-08-13
+PKG_SOURCE_VERSION:=00dbcf2c6e03c47d6c399338b6de060c71356464
+PKG_MIRROR_HASH:=9c600748a8e6151341dd92be628f0a21263763e588b6d1c87dc834679da0714a
 
 PKG_LICENSE:=BSD 3-Clause
 PKG_LICENSE_FILES:=LICENSE
-PKG_MAINTAINER:=CN_SZTL <cnsztl@project-openwrt.eu.org>
+PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 
 PKG_BUILD_PARALLEL:=1
 CMAKE_INSTALL:=1

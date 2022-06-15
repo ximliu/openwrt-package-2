@@ -2,7 +2,7 @@
 #define APP_FILTER_H
 
 #define AF_VERSION "5.0.1"
-#define AF_FEATURE_CONFIG_FILE "/etc/appfilter/feature.cfg"
+#define AF_FEATURE_CONFIG_FILE "/tmp/feature.cfg"
 
 #define MAX_PARSE_PKT_NUM 16
 #define MIN_HTTP_DATA_LEN 16
@@ -51,6 +51,25 @@ enum AF_FEATURE_PARAM_INDEX{
 	AF_DICT_PARAM_INDEX,
 };
 
+
+#define OAF_NETLINK_ID 29
+#define MAX_OAF_NL_MSG_LEN 1024
+
+enum E_MSG_TYPE{
+	AF_MSG_INIT,
+	AF_MSG_MAX
+};
+
+typedef struct af_msg{
+	int action;
+	void *data;
+}af_msg_t;
+
+struct af_msg_hdr{
+    int magic;
+    int len;
+};
+
 enum e_http_method{
 	HTTP_METHOD_GET = 1,
 	HTTP_METHOD_POST,
@@ -73,7 +92,7 @@ typedef struct https_proto{
 }https_proto_t;
 
 typedef struct flow_info{
-	struct nf_conn *ct; // Á¬½Ó¸ú×ÙÖ¸Õë
+	struct nf_conn *ct; // ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 	u_int32_t src; 
 	u_int32_t dst;
 	int l4_protocol;

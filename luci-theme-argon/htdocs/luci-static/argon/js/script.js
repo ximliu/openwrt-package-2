@@ -166,11 +166,7 @@
     /**
      * get current node and open it
      */
-    if (getCurrentNodeByUrl()) {
-        mainNodeName = "node-" + luciLocation[0] + "-" + luciLocation[1];
-        mainNodeName = mainNodeName.replace(/[ \t\n\r\/]+/g, "_").toLowerCase();
-        $("body").addClass(mainNodeName);
-    }
+    
     $(".cbi-button-up").val("");
     $(".cbi-button-down").val("");
 
@@ -240,7 +236,7 @@
     $(".cbi-section-table-titles, .cbi-section-table-descr, .cbi-section-descr").each(function () {
         var that = $(this);
         if (that.text().trim() == "") {
-            that.css("display", "none");
+            that.css("padding", "0px");
         }
     });
 

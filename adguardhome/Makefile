@@ -6,7 +6,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=adguardhome
-PKG_VERSION:=0.104.3
+PKG_VERSION:=0.106.3
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
@@ -27,7 +27,7 @@ GO_PKG_EXCLUDES:=dhcpd/standalone
 GO_PKG_LDFLAGS_X:=main.version=$(PKG_VERSION) main.channel=release main.goarm=$(GO_ARM)
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/golang/golang-package.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/adguardhome
 	SECTION:=net
